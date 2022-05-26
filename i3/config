@@ -54,6 +54,9 @@ exec_always --no-startup-id numlockx off
 
 exec xrandr --output HDMI-1 --primary --auto --left-of eDP-1 
 
+# Start mariadb for mysql server 
+# systemctl enable --now mariadb
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -70,6 +73,9 @@ bindsym $mod+x exec konsole
 # Rofi 
 bindsym $mod+shift+f exec rofi -show drun
 
+# lock screen
+
+bindsym $mod+l exec i3lock-fancy -p
 
 # Autotiling              
 exec_always --no-startup-id autotiling
@@ -97,10 +103,10 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+scedilla focus right
+# bindsym $mod+j focus left
+# bindsym $mod+k focus down
+# bindsym $mod+l focus up
+# bindsym $mod+scedilla focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left

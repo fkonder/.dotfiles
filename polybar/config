@@ -42,12 +42,12 @@ format-offset =
 
 [colors]
 ; Nord theme ============
-;background = #2F343F
-;foreground = #f3f4f5
-;alert = #d08770
-;volume-min = #a3be8c
-;volume-med = #ebcb8b
-;volume-max = #bf616a
+; background = #2F343F
+; foreground = #f3f4f5
+; alert = #d08770
+; volume-min = #a3be8c
+; volume-med = #ebcb8b
+; volume-max = #bf616a
 ; =======================
 
 ; Gotham theme ==========
@@ -60,15 +60,15 @@ format-offset =
 ; =======================
 
 ; INTRCPTR theme ============
-;background = ${xrdb:color0:#222}
-;background = #aa000000
-;background-alt = #444
-;foreground = ${xrdb:color7:#222}
-;foreground = #fff
-;foreground-alt = #555
-;primary = #ffb52a
-;secondary = #e60053
-;alert = #bd2c40
+; background = ${xrdb:color0:#222}
+; background = #aa000000
+; background-alt = #444
+; foreground = ${xrdb:color7:#222}
+; foreground = #fff
+; foreground-alt = #555
+; primary = #ffb52a
+; secondary = #e60053
+; alert = #bd2c40
 
 ################################################################################
 ################################################################################
@@ -102,8 +102,8 @@ line-size = 2
 line-color = #000000
 
 border-size = 0
-;border-left-size = 25
-;border-right-size = 25
+border-left-size = 4
+border-right-size = 4
 ;border-top-size = 0
 ;border-bottom-size = 25
 border-color = #000000
@@ -122,7 +122,7 @@ font-3 = "Noto Sans Mono:size=10;0"
 
 modules-left =  i3 xwindow
 #modules-center = kernel
-modules-right = spotify networkspeeddown networkspeedup memory2 cpu2 pamac-manager pipewire uptime battery  date 
+modules-right = spotify networkspeeddown networkspeedup memory2 cpu2 pipewire battery date 
 
 separator = |
 
@@ -520,7 +520,20 @@ bar-indicator = |
 bar-fill = ─
 bar-empty = ─
 
+#####################BLUETOOTH#################################################
+
+[module/bluetooth]
+type = custom/script
+exec = /home/omerfaruk/.config/polybar/scripts/bluetooth.sh
+interval = 2
+click-left = exec blueberry
+click-right = exec /home/omerfaruk/.config/polybar/scripts/toggle_bluetooth.sh
+format-padding = 1
+format-background = #000000
+format-foreground = #ffffff
+
 ################################################################################
+
 
 [module/battery]
 ;https://github.com/jaagr/polybar/wiki/Module:-battery
@@ -1024,7 +1037,7 @@ format-underline = #2ECC71
 # You can copy-paste your options for each possible action, which is more
 # trouble-free but repetitive, or apply only the relevant ones (for example
 # --sink-blacklist is only needed for next-sink).
-exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.pci-0000_00_1b.0.analog-stereo: Speakers" --sink-nickname "alsa_output.usb-Kingston_HyperX_Virtual_Surround_Sound_00000000-00.analog-stereo:" listen
+exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description%2" --sink-nickname "alsa_output.pci-0000_00_1b.0.analog-stereo: Speakers" --sink-nickname "alsa_output.usb-Kingston_HyperX_Virtual_Surround_Sound_00000000-00.analog-stereo:" listen
 click-right = exec pavucontrol &
 click-left = pulseaudio-control togmute
 click-middle = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
@@ -1084,7 +1097,7 @@ click-right = playerctl --player=spotify next
 click-middle = playerctl --player=spotify previous
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
-label = Şarkı: %output:0:150% 
+label =%output:0:150% 
 
 ################################################################################
 
@@ -1250,7 +1263,7 @@ label-disconnected-foreground = ${colors.foreground}
 
 [module/pulseaudio-simple]
 type = custom/script
-exec = /home/yusuf/.config/polybar/scripts/pulseaudio-simple.sh
+exec = /home/omerfaruk/.config/polybar/scripts/pulseaudio-simple.sh
 interval = 3
 
 ################################################################################
